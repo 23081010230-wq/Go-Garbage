@@ -17,16 +17,12 @@
 
 <!-- Stats -->
 <div class="grid grid-cols-4 gap-6 px-10 mt-8">
-    @php
-        $stats = [
-            ['title' => 'Total Points', 'value' => '1,250', 'sub' => '+120 this week'],
-            ['title' => 'Drop-offs', 'value' => '42', 'sub' => 'Verified'],
-            ['title' => 'Rank', 'value' => '#12', 'sub' => 'In your region'],
-            ['title' => 'Total Weight', 'value' => '84kg', 'sub' => 'Garbage dropped'],
-        ];
-    @endphp
-
-    @foreach($stats as $stat)
+    @foreach([
+        ['title' => 'Total Points', 'value' => '1,250', 'sub' => '+120 this week'],
+        ['title' => 'Drop-offs', 'value' => '42', 'sub' => 'Verified'],
+        ['title' => 'Rank', 'value' => '#12', 'sub' => 'In your region'],
+        ['title' => 'Total Weight', 'value' => '84kg', 'sub' => 'Garbage dropped'],
+    ] as $stat)
         <div class="bg-white p-5 rounded shadow">
             <p class="text-sm text-gray-500">{{ $stat['title'] }}</p>
             <p class="text-2xl font-bold">{{ $stat['value'] }}</p>
@@ -41,35 +37,25 @@
 
     <div class="grid grid-cols-3 gap-6">
         @foreach($dropoffs as $dropoff)
-        <div class="bg-white rounded shadow overflow-hidden">
-            <img
-                class="h-40 w-full object-cover"
-                src="{{ asset('images/dashboard/' . $dropoff->image) }}"
-                alt="{{ $dropoff->title }}"
-            />
-
-            <div class="p-4">
-                <h4 class="font-semibold">
-                    {{ $dropoff->title }}
-                </h4>
-
-                <p class="text-sm text-gray-500">
-                    {{ $dropoff->weight }} — {{ $dropoff->status }}
-                </p>
-
-                <button class="mt-3 bg-green-600 text-white px-4 py-1 rounded">
-                    <a
-                        href="{{ route('dropoffs.show', $dropoff->id) }}"
-                        class="mt-3 inline-block bg-green-600 text-white px-4 py-1 rounded"
-                    >
-                        Verify Drop-off
-                    </a>
-                </button>
+            <div class="bg-white rounded shadow overflow-hidden">
+                <img
+                    class="h-40 w-full object-cover"
+                    src="{{ asset('Images/Dashboard/' . $dropoff->image) }}"
+                    alt="{{ $dropoff->title }}"
+                />
+                <div class="p-4">
+                    <h4 class="font-semibold">{{ $dropoff->title }}</h4>
+                    <p class="text-sm text-gray-500">
+                        {{ $dropoff->weight }} — {{ $dropoff->status }}
+                    </p>
+                    <button class="mt-3 bg-green-600 text-white px-4 py-1 rounded">
+                        View
+                    </button>
+                </div>
             </div>
-        </div>
         @endforeach
-
     </div>
 </div>
 
 @endsection
+

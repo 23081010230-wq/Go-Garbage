@@ -1,20 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Models\Dropoff;
 use App\Http\Controllers\DropoffController;
 use App\Http\Controllers\RewardController;
+use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     $dropoffs = Dropoff::latest()->get();
 
-//     return view('dashboard', [
-//         'dropoffs' => $dropoffs,
-//         'title' => 'Dashboard',
-//     ]);
-// });
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
-Route::get('/', [DropoffController::class, 'dashboard']);
+Route::get('/dashboard', function () {
+    return view('dashboard', [
+        'dropoffs' => \App\Models\Dropoff::latest()->get(),
+    ]);
+})->middleware('auth')->name('dashboard');
+require __DIR__.'/auth.php';
+
 
 Route::get('/verify-dropoff', [DropoffController::class, 'index'])
     ->name('dropoffs.index');
@@ -29,3 +31,4 @@ Route::get('/rewards', [RewardController::class, 'index'])
 
 Route::post('/rewards', [RewardController::class, 'redeem'])
     ->name('rewards.redeem');
+    
