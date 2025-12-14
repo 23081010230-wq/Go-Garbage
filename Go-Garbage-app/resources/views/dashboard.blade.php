@@ -4,7 +4,7 @@
 
 <!-- Hero -->
 <div class="relative h-64 bg-cover bg-center"
-     style="background-image: url('https://images.unsplash.com/photo-1528323273322-d81458248d40');">
+     style="background-image: url('{{ asset('Images/Dashboard/sampah-1.jpeg') }}');">
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative z-10 h-full flex flex-col justify-center px-10 text-white">
         <h2 class="text-4xl font-bold">Drop Off Garbage, Earn Cash</h2>
@@ -40,23 +40,30 @@
     <h3 class="text-xl font-semibold mb-4">Recent Drop-offs</h3>
 
     <div class="grid grid-cols-3 gap-6">
-        @foreach([
-            ['title'=>'Bottle Collection — Green Park','kg'=>'12 kg — Verified'],
-            ['title'=>'Paper Drop — Community Center','kg'=>'8 kg — Pending'],
-            ['title'=>'E-waste — Tech Drive','kg'=>'20 kg — Verified'],
-        ] as $item)
+        @foreach($dropoffs as $dropoff)
         <div class="bg-white rounded shadow overflow-hidden">
-            <img class="h-40 w-full object-cover"
-                 src="https://source.unsplash.com/random/400x300?recycle" />
+            <img
+                class="h-40 w-full object-cover"
+                src="{{ asset('images/dashboard/' . $dropoff->image) }}"
+                alt="{{ $dropoff->title }}"
+            />
+
             <div class="p-4">
-                <h4 class="font-semibold">{{ $item['title'] }}</h4>
-                <p class="text-sm text-gray-500">{{ $item['kg'] }}</p>
+                <h4 class="font-semibold">
+                    {{ $dropoff->title }}
+                </h4>
+
+                <p class="text-sm text-gray-500">
+                    {{ $dropoff->weight }} — {{ $dropoff->status }}
+                </p>
+
                 <button class="mt-3 bg-green-600 text-white px-4 py-1 rounded">
                     View
                 </button>
             </div>
         </div>
         @endforeach
+
     </div>
 </div>
 
