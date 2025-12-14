@@ -18,10 +18,10 @@
 <!-- Stats -->
 <div class="grid grid-cols-4 gap-6 px-10 mt-8">
     @foreach([
-        ['title' => 'Total Points', 'value' => '1,250', 'sub' => '+120 this week'],
-        ['title' => 'Drop-offs', 'value' => '42', 'sub' => 'Verified'],
-        ['title' => 'Rank', 'value' => '#12', 'sub' => 'In your region'],
-        ['title' => 'Total Weight', 'value' => '84kg', 'sub' => 'Garbage dropped'],
+        ['title' => 'Total Points', 'value' => number_format($totalPoints), 'sub' => '+120 this week'],
+        ['title' => 'Drop-offs', 'value' => $dropoffsCount, 'sub' => 'Verified'],
+        ['title' => 'Rank', 'value' => $rank, 'sub' => 'In your region'],
+        ['title' => 'Total Weight', 'value' => $totalWeight . ' kg', 'sub' => 'Garbage dropped'],
     ] as $stat)
         <div class="bg-white p-5 rounded shadow">
             <p class="text-sm text-gray-500">{{ $stat['title'] }}</p>
@@ -29,6 +29,7 @@
             <p class="text-sm text-green-600">{{ $stat['sub'] }}</p>
         </div>
     @endforeach
+
 </div>
 
 <!-- Recent Drop-offs -->

@@ -21,7 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'points',
+
     ];
+
+    public function dropoffs()
+    {
+        return $this->hasMany(Dropoff::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -57,7 +57,9 @@
 
         <div class="mt-10 p-4 bg-green-50 rounded">
             <p class="text-sm text-gray-600">Your Impact</p>
-            <p class="text-2xl font-bold text-green-600">1,250</p>
+            <p class="text-2xl font-bold text-green-600">
+                {{ auth()->user()->points }}
+            </p>
             <p class="text-xs text-gray-500">Total Points</p>
         </div>
     </aside>

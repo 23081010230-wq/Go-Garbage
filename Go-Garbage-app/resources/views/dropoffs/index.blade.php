@@ -80,7 +80,7 @@
             @foreach($dropoffs as $dropoff)
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <img
-                    src="{{ asset('images/dropoffs/'.$dropoff->image) }}"
+                    src="{{ asset('Images/Dashboard/'.$dropoff->image) }}"
                     class="h-36 w-full object-cover">
 
                 <div class="p-4">

@@ -3,7 +3,9 @@
 use App\Models\Dropoff;
 use App\Http\Controllers\DropoffController;
 use App\Http\Controllers\RewardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/', function () {
@@ -11,11 +13,24 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    $user = Auth::user();
+
+    $verifiedDropoffs = $user->dropoffs()
+        ->where('status', 'Verified');
+
     return view('dashboard', [
-        'dropoffs' => \App\Models\Dropoff::latest()->get(),
+        // Show ALL dropoffs in the list
+        'dropoffs' => $user->dropoffs()->latest()->get(),
+
+        // Stats ONLY from verified
+        'totalPoints'   => $user->points ?? 0,
+        'dropoffsCount' => $verifiedDropoffs->count(),
+        'totalWeight'   => $verifiedDropoffs->sum('weight'),
+        'rank'          => '#12',
     ]);
 })->middleware('auth')->name('dashboard');
 require __DIR__.'/auth.php';
+
 
 
 Route::get('/verify-dropoff', [DropoffController::class, 'index'])
