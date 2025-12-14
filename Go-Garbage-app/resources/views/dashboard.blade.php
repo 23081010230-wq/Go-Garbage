@@ -58,7 +58,12 @@
                 </p>
 
                 <button class="mt-3 bg-green-600 text-white px-4 py-1 rounded">
-                    View
+                    <a
+                        href="{{ route('dropoffs.show', $dropoff->id) }}"
+                        class="mt-3 inline-block bg-green-600 text-white px-4 py-1 rounded"
+                    >
+                        Verify Drop-off
+                    </a>
                 </button>
             </div>
         </div>

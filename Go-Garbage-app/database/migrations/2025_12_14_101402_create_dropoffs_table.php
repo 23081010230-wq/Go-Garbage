@@ -14,11 +14,12 @@ return new class extends Migration
     Schema::create('dropoffs', function (Blueprint $table) {
         $table->id();
         $table->string('title');
-        $table->string('image'); // image filename
-        $table->string('status');
+        $table->string('image');
         $table->string('weight');
+        $table->string('location'); // ⬅ TAMBAHKAN
+        $table->string('status')->default('pending');
         $table->timestamps();
-    });
+        });
 }
 
 

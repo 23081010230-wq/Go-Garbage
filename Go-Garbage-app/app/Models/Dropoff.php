@@ -12,7 +12,9 @@ class Dropoff extends Model
     protected $fillable = [
         'title',
         'image',
-        'status',
         'weight',
+        'status',
+        'verified_at',
+        'points',
     ];
 }

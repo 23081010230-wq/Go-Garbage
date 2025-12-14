@@ -17,11 +17,41 @@
         </div>
 
         <nav class="space-y-2">
-            <a href="#" class="block px-3 py-2 rounded bg-green-50 text-green-700 font-medium">Dashboard</a>
-            <a href="#" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded">Verify Drop-off</a>
-            <a href="#" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded">Rewards</a>
-            <a href="#" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded">Leaderboard</a>
-            <a href="#" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded">Collection Centers</a>
+
+            {{-- Dashboard --}}
+            <a href="/"
+               class="block px-3 py-2 rounded font-medium
+               {{ request()->is('/') 
+                    ? 'bg-green-50 text-green-700' 
+                    : 'text-gray-600 hover:bg-gray-100' }}">
+                Dashboard
+            </a>
+
+            {{-- Verify Drop-off --}}
+            <a href="{{ route('dropoffs.index') }}"
+               class="block px-3 py-2 rounded font-medium
+               {{ request()->is('verify-dropoff') 
+                    ? 'bg-green-50 text-green-700' 
+                    : 'text-gray-600 hover:bg-gray-100' }}">
+                Verify Drop-off
+            </a>
+
+            {{-- Rewards --}}
+            <a href="{{ route('rewards.index') }}"
+                class="block px-3 py-2 rounded
+                {{ request()->is('rewards') ? 'bg-green-50 text-green-700 font-medium' : 'text-gray-600 hover:bg-gray-100' }}">
+                Rewards
+            </a>
+
+            <a href="#"
+               class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded">
+                Leaderboard
+            </a>
+
+            <a href="#"
+               class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded">
+                Collection Centers
+            </a>
         </nav>
 
         <div class="mt-10 p-4 bg-green-50 rounded">
