@@ -17,4 +17,9 @@ class Dropoff extends Model
         'verified_at',
         'points',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
 }

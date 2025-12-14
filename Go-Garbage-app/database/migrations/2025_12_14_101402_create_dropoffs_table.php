@@ -15,7 +15,7 @@ return new class extends Migration
         $table->id();
         $table->string('title');
         $table->string('image');
-        $table->string('weight');
+        $table->integer('weight')->change();
         $table->string('location'); // ⬅ TAMBAHKAN
         $table->string('status')->default('pending');
         $table->timestamps();

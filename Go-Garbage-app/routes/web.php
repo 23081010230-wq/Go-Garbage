@@ -5,6 +5,8 @@ use App\Http\Controllers\DropoffController;
 use App\Http\Controllers\RewardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LeaderboardController;
+
 
 
 
@@ -47,3 +49,6 @@ Route::get('/rewards', [RewardController::class, 'index'])
 Route::post('/rewards', [RewardController::class, 'redeem'])
     ->name('rewards.redeem');
     
+Route::get('/leaderboard', [LeaderboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('leaderboard');
